@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Adding SHG Meeting Details</h1>
+    Please add in the details of your SHG meeting here.
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+
+
+                <div class="form-group">
+                    {{ form.date.label(class="form-control-label") }}
+                    {% if form.date.errors %}
+                        {{ form.date(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.date.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.date(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                {% for i in range((subforms|length)) %}
+                    <form method="POST" action="">
+                        {{ subforms[i].hidden_tag() }}
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-4"> Add meeting details for member {{ shg_members[i] }}</legend>
+
+                                <div class="form-group">
+                                    {{ subforms[i].attended.label(class="form-control-label") }}
+                                    {% if subforms[i].attended.errors %}
+                                        {{ subforms[i].attended(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in subforms[i].attended.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ subforms[i].attended(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ subforms[i].bank_visits.label(class="form-control-label") }}
+                                    {% if subforms[i].bank_visits.errors %}
+                                        {{ subforms[i].bank_visits(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in subforms[i].bank_visits.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ subforms[i].bank_visits(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ subforms[i].govt_visits.label(class="form-control-label") }}
+                                    {% if subforms[i].govt_visits.errors %}
+                                        {{ subforms[i].govt_visits(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in subforms[i].govt_visits.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ subforms[i].govt_visits(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ subforms[i].amt_paid.label(class="form-control-label") }}
+                                    {% if subforms[i].amt_paid.errors %}
+                                        {{ subforms[i].amt_paid(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in subforms[i].amt_paid.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ subforms[i].amt_paid(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ subforms[i].debt.label(class="form-control-label") }}
+                                    {% if subforms[i].debt.errors %}
+                                        {{ subforms[i].debt(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in subforms[i].debt.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ subforms[i].debt(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ subforms[i].loan_taken.label(class="form-control-label") }}
+                                    {% if subforms[i].loan_taken.errors %}
+                                        {{ subforms[i].loan_taken(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in subforms[i].loan_taken.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ subforms[i].loan_taken(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ subforms[i].loan_repaid.label(class="form-control-label") }}
+                                    {% if subforms[i].loan_repaid.errors %}
+                                        {{ subforms[i].loan_repaid(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in subforms[i].loan_repaid.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ subforms[i].loan_repaid(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                {{ subforms[i].submit(class="btn btn-outline-info") }}
+                            </div>
+                {% endfor %}
+
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

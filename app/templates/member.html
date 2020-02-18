@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <table border="1">
+            <tr>
+                <td> Name </td>
+                <td> Gender </td>
+                <td> Age </td>
+                <td> Name of Spouse/Father</td>
+                <td> Religion </td>
+                <td> Social/Caste Category </td>
+                <td> Disability </td>
+                <td> Poverty Level </td>
+                <td> Current total saving </td>
+            </tr>
+            <tr>
+                <td><a class="article-title" href="{{ url_for('member', shg_id=shg_id, member_id=member.id) }}">{{member.name}}</td>
+<!--                    <td>{{member.name}}</td>-->
+                <td>{{member.gender}}</td>
+                <td>{{member.age}}</td>
+                <td>{{member.spouse_father}}</td>
+                <td>{{member.religion}}</td>
+                <td>{{member.soc_category}}</td>
+                <td>{{member.disability}}</td>
+                <td>{{member.apl}}</td>
+                <td>{{member.total_saving}}</td>
+                <td><a class="article-title" href="{{ url_for('add_member_meeting', shg_id=shg_id, member_id=member.id) }}"> Add Meeting Details</td>
+
+            </tr>
+
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_member', shg_id = member.shg.coordinator.id, member_id=member.id) }}">Update Member</a>
+            <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('view_member_meetings', shg_id = member.shg.coordinator.id, member_id=member.id) }}">Meeting History</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('eval_member', shg_id = member.shg.coordinator.id, member_id=member.id) }}"> Evaluate</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('shg', shg_id = member.shg.coordinator.id) }}"> Back</a>
+
+
+        </div>
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Member?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('delete_member', shg_id=member.shg.id, member_id=member.id) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Member: {{member.name}}</h1>
+        <table border="1">
+            <tr>
+                <td> Date of Meeting </td>
+                <td> Attended Meeting? </td>
+                <td> Amount Paid </td>
+                <td> Bank visits last month</td>
+                <td> Govt. visits last month </td>
+                <td> Existing Debt? </td>
+                <td> Loan taken this meeting </td>
+                <td> Loan repaid this meeting </td>
+            </tr>
+            {% for member_meeting in member_meetings %}
+                <tr>
+                    <td>{{member_meeting.date}}</td>
+                    <td>{{member_meeting.attended}}</td>
+                    <td>{{member_meeting.amt_paid}}</td>
+                    <td>{{member_meeting.bank_visits}}</td>
+                    <td>{{member_meeting.govt_visits}}</td>
+                    <td>{{member_meeting.debt}}</td>
+                    <td>{{member_meeting.loan_taken}}</td>
+                    <td>{{member_meeting.loan_repaid}}</td>
+                </tr>
+            {% endfor %}
+
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('member', shg_id=shg.id, member_id=member.id) }}"> Back </a>
+{% endblock content %}

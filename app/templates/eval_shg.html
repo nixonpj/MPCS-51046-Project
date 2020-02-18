@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Self Help Group: {{shg.name}}</h1>
+        <h>SHG Name is {{shg.name}}</h><br>
+        <h>Address is {{shg.address}}</h><br>
+        <h>Monthly saving amount is {{shg.saving_amt}}</h><br>
+        <h>{{shg.account_num}}</h><br>
+        <h>{{shg.bank}}</h><br>
+        <h>{{shg.branch}}</h><br>
+        <h>{{shg.date_formed}}</h>
+        The SHG has {{num_members}} members. <br>
+        {{disabled_count}} are handicapped. <br>
+        {{minority_count}} belong to minority communities <br>
+        {{bpl_count}} are classified as falling below poverty line. <br>
+        The loan concentration index is {{loan_conc_index}} <br>
+        The default risk for this SHG is {{default_risk}} <br>
+        The SHG scores {{soc_score}} on the social backwardness index.<br>
+        The SHG has {{soc_category_breakdown['general']}} General category members. <br>
+        The SHG has {{soc_category_breakdown['obc']}} OBC category members. <br>
+        The SHG has {{soc_category_breakdown['sc']}} SC category members. <br>
+        The SHG has {{soc_category_breakdown['st']}} ST category members. <br>
+
+        <table border="1">
+            <tr>
+                <td> Name </td>
+                <td> Gender </td>
+                <td> Age </td>
+                <td> Name of Spouse/Father</td>
+                <td> Religion </td>
+                <td> Social/Caste Category </td>
+                <td> Disability </td>
+                <td> Poverty Level </td>
+                <td> Current total saving </td>
+            </tr>
+            {% for member in members %}
+                <tr>
+                    <td><a class="article-title" href="{{ url_for('member', shg_id=shg.id, member_id=member.id) }}">{{member.name}}</td>
+                    <td>{{member.gender}}</td>
+                    <td>{{member.age}}</td>
+                    <td>{{member.spouse_father}}</td>
+                    <td>{{member.religion}}</td>
+                    <td>{{member.soc_category}}</td>
+                    <td>{{member.disability}}</td>
+                    <td>{{member.apl}}</td>
+                    <td>{{member.total_saving}}</td>
+                </tr>
+            {% endfor %}
+
+
+
+        <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('shg', shg_id=shg.id) }}"> Back </a>
+        </div>
+{% endblock %}

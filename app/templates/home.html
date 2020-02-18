@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>List of Self Help Groups</h1>
+         <table border="1">
+             <tr>
+                <th>SHG Name</th>
+                <th>Address</th>
+                <th>Saving Amount</th>
+                 <th>Account Number</th>
+                 <th>Bank</th>
+                 <th>Bank Branch</th>
+                 <th>Date Formed</th>
+             </tr>
+             {% for shg in shgs %}
+                  <tr>
+                    <td><a class="article-title" href="{{ url_for('shg', shg_id=shg.id) }}">{{shg.name}}</td>
+                    <td>{{shg.address}}</td>
+                    <td>{{shg.saving_amt}}</td>
+                      <td>{{shg.account_num}}</td>
+                      <td>{{shg.bank}}</td>
+                      <td>{{shg.branch}}</td>
+                      <td>{{shg.date_formed}}
+                  </tr>
+             {% endfor %}
+         </table>
+{% endblock content %}

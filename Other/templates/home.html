@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Welcome to SHG Tracker</h1>
+    This app is going to help you store your SHG data and track it over time. Say goodbye to tedious paperwork!
+    {% for shg in shgs %}
+        <h1>{{shg.name}}</h1>
+        Number of Members: {{shg.no_members}}
+        Address: {{shg.address}}
+        Date of Formation: {{shg.date_of_formation}}
+    {% endfor %}
+</body>
+</html>

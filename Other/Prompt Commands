@@ -1,0 +1,9 @@
+Go to project directory - Nick_1
+set FLASK_APP=Main.py
+flask run
+set FLASK_DEBUG=1  #for debug mode
+you have created .flaskenv so need to do flask_app=
+Jinja2 is used in rendering templates
+venv is used especially when installing packages and modules externally. This isolates your environment with general
+environment cus clashes possible when same module diff version reqd by diff apps.
+flask db migrate
